@@ -19,8 +19,12 @@ async function getDeveloperExcuse() {
 
 // Get quote of the day
 async function getQuoteOfTheDay(category?: string) {
+  const headers = new Headers({
+    Authorization: `Bearer ${THEYSAIDSO_API_KEY}`,
+  });
   const res = await fetch(
     "https://quotes.rest/qod.json" + (category ? `?category=${category}` : ""),
+    { headers },
   );
   const body = await res.json();
 
